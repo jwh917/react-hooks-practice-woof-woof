@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import PupsBar from "./PupsBar";
-import PupsInfo from "./PupsInfo";
 import FilterButton from "./FilterButton";
-
+import PupsBar from "./PupsBar";
+import PupsContainer from "./PupsContainer";
 
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
       .then((r) => r.json())
       .then((puppsData) => setPups(puppsData));
   }, []);
-
 
 
   function showPupInfo(event){
@@ -44,10 +42,7 @@ function App() {
     <div className="App">
       <FilterButton filterOnOff={filterOnOff} filterPups={filterPups}/>
       <PupsBar pups={pups} showPupInfo={showPupInfo} filterOnOff={filterOnOff}/>
-      <div id="dog-summary-container">
-        <h1>DOGGO:</h1>
-          <PupsInfo shownPup={shownPup} pups={pups} editPupInfo={editPupInfo}/>
-      </div>
+      <PupsContainer shownPup={shownPup} pups={pups} editPupInfo={editPupInfo}/>
     </div>
   );
 }

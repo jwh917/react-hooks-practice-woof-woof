@@ -3,7 +3,7 @@ import PupsCard from "./PupsCard";
 
 function PupsInfo({shownPup, pups, editPupInfo}) {
 
-  const displayedPups = pups.map((pup) => {
+  function helpDisplay(pup, shownPup){
     if(pup.name === shownPup){
       return (
         <PupsCard
@@ -13,8 +13,9 @@ function PupsInfo({shownPup, pups, editPupInfo}) {
         /> 
         )
       }
-  })
+  }
 
+  const displayedPups = pups.map((pup) => helpDisplay(pup, shownPup))
 
 
   return (

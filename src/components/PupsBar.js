@@ -2,7 +2,7 @@ import React from "react";
 
 function PupsBar({pups, showPupInfo, filterOnOff}) {
 
-  const filteredBar = pups.filter((pup) => {
+  function helpFilter(filterOnOff, pup){
     if(filterOnOff === true && pup.isGoodDog === true){
       return pup
     }
@@ -10,15 +10,15 @@ function PupsBar({pups, showPupInfo, filterOnOff}) {
     if(filterOnOff === false){
       return pup
     }
-    
-  })
+  }
 
+  const filteredBar = pups.filter((pup) => helpFilter(filterOnOff, pup))
 
+  
   const displayedBar = filteredBar.map((pup) => {
     return (
       <span key={pup.id} onClick={showPupInfo}>{pup.name}</span>
     )
-    
   })
 
 
